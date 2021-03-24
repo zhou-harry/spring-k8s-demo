@@ -2,8 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    app: k8s-demo-app
-  name: k8s-demo-service
+    app: spring-k8s-server-app
+  name: spring-k8s-server-service
   namespace: default
 spec:
   type: NodePort
@@ -12,21 +12,14 @@ spec:
       targetPort: 8080
       nodePort: 58080
   selector:
-    app: k8s-demo-app
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: k8s-demo-env-configmap
-data:
-  application_name: K8S-DEMO
+    app: spring-k8s-server-app
 ---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
   labels:
-    app: k8s-demo-app
-  name: k8s-demo-app
+    app: spring-k8s-server-app
+  name: spring-k8s-server-app
   namespace: default
 spec:
   replicas: 2
@@ -39,35 +32,22 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: k8s-demo-app
+      app: spring-k8s-server-app
   template:
     metadata:
       labels:
-        app: k8s-demo-app
+        app: spring-k8s-server-app
     spec:
       #hostNetwork: true
+      #dnsPolicy: ClusterFirst
       terminationGracePeriodSeconds: 60
       restartPolicy: Always
-      dnsPolicy: ClusterFirst
       containers:
-        - name: k8s-demo
+        - name: spring-k8s-server
           image: image:v
           ports:
             - containerPort: 8080
               protocol: TCP
           env:
-            - name: APPLICATION_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: k8s-demo-env-configmap
-                  key: application_name
-            - name: USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: db-master-ptom-001-ch-secret
-                  key: username
-            - name: PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-master-ptom-001-ch-secret
-                  key: password
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
