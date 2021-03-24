@@ -1,9 +1,9 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: spring-k8s-server-config-pro
+  name: spring-k8s-server
 data:
   application.yml: |-
     k8s:
       demo:
-        message: Say Hello to the Ops
+        message: Say Hello to the World

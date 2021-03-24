@@ -21,6 +21,8 @@ rules:
     resources:
       - "namespaces"
       - "endpoints"
+      - "configmaps"
+      - "services"
       - "pods"
     verbs:
       - "get"
@@ -41,5 +43,5 @@ subjects:
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: endpoints-reader
+  name: spring-cloud-cr
   apiGroup: ""

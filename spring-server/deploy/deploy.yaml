@@ -39,7 +39,7 @@ spec:
         app: spring-k8s-server-app
     spec:
       #hostNetwork: true
-      #dnsPolicy: ClusterFirst
+      dnsPolicy: ClusterFirst
       terminationGracePeriodSeconds: 60
       restartPolicy: Always
       serviceAccountName: spring-cloud-account
