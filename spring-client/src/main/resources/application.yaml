@@ -1,3 +1,3 @@
 provider:
   service:
-    name: spring-server
+    name: http://spring-k8s-server-service:8080
