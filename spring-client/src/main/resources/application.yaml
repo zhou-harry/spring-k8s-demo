@@ -3,11 +3,11 @@ spring:
     name: spring-k8s-client
 
 server:
-  port: 8090
+  port: 8080
 
 management:
   server:
-    port: 8091
+    port: 8081
   endpoints:
     web:
       exposure:

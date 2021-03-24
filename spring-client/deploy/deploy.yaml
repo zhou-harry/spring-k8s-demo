@@ -1,0 +1,59 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: spring-k8s-client-app
+  name: spring-k8s-client-service
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - name: app
+      port: 80
+      targetPort: 8080
+      nodePort: 38090
+    - name: manage
+      port: 8081
+      targetPort: 8081
+      nodePort: 38091
+  selector:
+    app: spring-k8s-client-app
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    app: spring-k8s-client-app
+  name: spring-k8s-client-app
+  namespace: default
+spec:
+  replicas: 2
+  revisionHistoryLimit: 15
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: spring-k8s-client-app
+  template:
+    metadata:
+      labels:
+        app: spring-k8s-client-app
+    spec:
+      #hostNetwork: true
+      dnsPolicy: ClusterFirst
+      terminationGracePeriodSeconds: 60
+      restartPolicy: Always
+      serviceAccountName: spring-cloud-account
+      containers:
+        - name: spring-k8s-client
+          image: image:v
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
