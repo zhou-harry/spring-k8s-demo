@@ -10,7 +10,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
-      nodePort: 58080
+      nodePort: 38080
   selector:
     app: spring-k8s-server-app
 ---
