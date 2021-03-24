@@ -9,7 +9,7 @@ spec:
   type: NodePort
   ports:
     - name: app
-      port: 80
+      port: 8080
       targetPort: 8080
       nodePort: 38090
     - name: manage
@@ -27,7 +27,7 @@ metadata:
   name: spring-k8s-client-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 15
   minReadySeconds: 5
   strategy:
