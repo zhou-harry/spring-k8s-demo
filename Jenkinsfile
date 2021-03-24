@@ -4,7 +4,7 @@ node {
       git branch: '${branch}', credentialsId: 'gitlab-root', url: 'http://k8s-master:8016/root/spring-k8s.git'
    }
    stage('Maven编译') {
-      sh 'mvn clean package -Dmaven.test.skip=true'
+      sh 'mvn clean package -Dmaven.test.skip=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true'
    }
    stage('Docker构建') {
       for(int i=0;i<selectedModule.length;i++){
