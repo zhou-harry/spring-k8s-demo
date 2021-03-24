@@ -10,10 +10,10 @@ node {
       for(int i=0;i<selectedModule.length;i++){
         def module=selectedModule[i];
         dir(module) {
-          sh '''
+          sh """
             chmod 755 target/deploy/build.sh
             target/deploy/build.sh ${module}
-          '''
+          """
         }
       }
    }
@@ -21,10 +21,10 @@ node {
       for(int i=0;i<selectedModule.length;i++){
         def module=selectedModule[i];
         dir(module) {
-          sh '''
+          sh """
             chmod 755 target/deploy/deploy.sh
             target/deploy/deploy.sh ${module}
-          '''
+          """
         }
       }
    }
