@@ -1,5 +1,5 @@
 node {
-   def selectedModule="${module}".split(',')
+   def selectedModule="${modules}".split(',')
    stage('代码同步') {
       git branch: '${branch}', credentialsId: 'gitlab-root', url: 'git://github.com/zhou-harry/spring-k8s-demo.git'
    }
