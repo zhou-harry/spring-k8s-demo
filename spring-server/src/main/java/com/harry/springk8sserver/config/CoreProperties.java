@@ -7,5 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "k8s.demo")
 public class CoreProperties {
 
+  private String username;
+  private String password;
   private String message;
 }

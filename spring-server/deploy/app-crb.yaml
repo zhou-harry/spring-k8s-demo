@@ -22,6 +22,7 @@ rules:
       - "namespaces"
       - "endpoints"
       - "configmaps"
+      - "secrets"
       - "services"
       - "pods"
     verbs:
