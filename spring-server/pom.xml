@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>spring-k8s-demo</artifactId>
+    <groupId>com.harry</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>spring-server</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <!--prepare-dockerfile-->
+          <execution>
+            <id>prepare-dockerfile</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/deploy</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/deploy</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <!--default-resources-->
+          <execution>
+            <id>default-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>target/classes</outputDirectory>
+              <useDefaultDelimiters>false</useDefaultDelimiters>
+              <delimiters>
+                <delimiter>@</delimiter>
+              </delimiters>
+              <resources>
+                <resource>
+                  <directory>src/main/resources/</directory>
+                  <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>${project.basedir}/lib</directory>
+                  <targetPath>BOOT-INF/lib/</targetPath>
+                  <includes>
+                    <include>**/*.jar</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <targetPath>BOOT-INF/classes/</targetPath>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <move file="${project.build.directory}/spring-server-0.0.1-SNAPSHOT.jar"
+                  tofile="${project.build.directory}/deploy/app.jar"/>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: spring-k8s-server-config
+data:
+  application.yml: |-
+    greeting:
+      message: Say Hello to the World
+    farewell:
+      message: Say Goodbye
