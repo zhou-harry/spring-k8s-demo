@@ -5,7 +5,7 @@ spring:
     kubernetes:
       discovery:
         enabled: true
-        all-namespaces: true
+        all-namespaces: false
         include-not-ready-addresses: true
         primary-port-name: app
       reload:

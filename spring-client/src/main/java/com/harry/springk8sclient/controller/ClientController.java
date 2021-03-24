@@ -15,7 +15,7 @@ public class ClientController {
    *
    * @return
    */
-  @GetMapping("/getServer")
+  @GetMapping("/server")
   public String getServer() {
     return feignClientApi.getServer();
   }
