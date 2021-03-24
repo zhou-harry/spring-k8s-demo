@@ -10,6 +10,7 @@ import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,13 @@ public class BaseController implements ApplicationListener<WebServerInitializedE
   public void onApplicationEvent(WebServerInitializedEvent event) {
     this.serverPort = event.getWebServer().getPort();
   }
+
+  @RequestMapping("/")
+  public String ribbonPing(){
+    log.info("ribbonPing of {}", hostName);
+    return hostName;
+  }
+
   /**
    * 响应使用了ribbon服务的调用
    * @return

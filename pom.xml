@@ -52,7 +52,6 @@
       <artifactId>spring-cloud-starter-kubernetes-fabric8</artifactId>
       <version>${spring-cloud-starter-kubernetes-version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-kubernetes-fabric8-all</artifactId>
@@ -60,9 +59,18 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <!-- Only needed at compile time -->
       <scope>provided</scope>
     </dependency>
 
