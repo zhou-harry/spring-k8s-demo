@@ -12,7 +12,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: spring-k8s-server-secret
+  name: spring-k8s-server-secret-dev
 data:
   k8s.demo.password: eGlhb3d1XzhydDRCWXk1VA==
 stringData:
