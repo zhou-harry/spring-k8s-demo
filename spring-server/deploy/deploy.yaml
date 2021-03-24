@@ -42,6 +42,7 @@ spec:
       #dnsPolicy: ClusterFirst
       terminationGracePeriodSeconds: 60
       restartPolicy: Always
+      serviceAccountName: spring-cloud-account
       containers:
         - name: spring-k8s-server
           image: image:v
