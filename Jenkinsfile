@@ -1,7 +1,7 @@
 node {
    def selectedModule="${module}".split()
    stage('代码同步') {
-      git branch: '${branch}', credentialsId: 'gitlab-root', url: 'http://k8s-master:8016/root/spring-k8s.git'
+      git branch: '${branch}', credentialsId: 'gitlab-root', url: 'git://github.com/zhou-harry/spring-k8s-demo.git'
    }
    stage('Maven编译') {
       sh 'mvn clean package -Dmaven.test.skip=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true'
