@@ -6,7 +6,7 @@ TAG=dev-$(date +%m%d%H%M)-${BUILD_NUMBER}
 #如果下面需要将镜像推送到镜像仓库，那么此处的镜像名称需要带上镜像仓库地址
 IMAGE_NAME="k8s-master:8015/caohua_rep/$API_NAME:$TAG"
 #进入target目录复制Dockerfile文件
-cd $WORKSPACE/target/deploy
+cd ${WORKSPACE}/${APP_NAME}/target/deploy
 #构建docker镜像
 docker build -t $IMAGE_NAME .
 #登录Harbor镜像仓库（此处的仓库地址需要与上面IMAGE_NAME的仓库地址保持一致否则推送denied）
