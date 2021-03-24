@@ -7,7 +7,7 @@ spring:
         enabled: true
         all-namespaces: true
         include-not-ready-addresses: true
-        primary-port-name: http
+        primary-port-name: app
       reload:
         enabled: true
         #监听模式：
