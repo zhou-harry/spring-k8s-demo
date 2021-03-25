@@ -28,25 +28,9 @@ public class ClientController {
    *
    * @return
    */
-  @HystrixCommand(
-      commandProperties = { // Command 熔断配置
-          // 设置操作时间为 100 毫秒
-          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100")
-      },
-      fallbackMethod = "getServerFallback" // 设置 fallback 方法
-  )
   @GetMapping("/server")
-  public String getServer() throws InterruptedException {
-    long executeTime = random.nextInt(200);
-    // 通过休眠来模拟执行时间
-    log.info("Find Execute Time : " + executeTime + " ms");
-    Thread.sleep(executeTime);
-
+  public String getServer() {
     return feignClientApi.getServer();
-  }
-
-  public String getServerFallback() {
-    return "执行时间过长，触发熔断......";
   }
 
   @GetMapping("/service")
@@ -54,8 +38,19 @@ public class ClientController {
     return feignClientApi.getServiceList();
   }
 
+  @HystrixCommand(
+      commandProperties = { // Command 熔断配置
+          // 设置操作时间为 100 毫秒
+          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100")
+      },
+      fallbackMethod = "getInstanceFallback" // 设置 fallback 方法
+  )
   @GetMapping("/instance")
-  public Object getInstance(@RequestParam("name") String name) {
+  public Object getInstance(@RequestParam("name") String name) throws InterruptedException {
+    long executeTime = random.nextInt(200);
+    // 通过休眠来模拟执行时间
+    log.info("Find Execute Time : " + executeTime + " ms");
+    Thread.sleep(executeTime);
     return feignClientApi.getInstance(name);
   }
 
@@ -67,5 +62,9 @@ public class ClientController {
   @PostMapping("/instance3")
   public Object getInstance3(@RequestBody ServiceDomain domain) {
     return feignClientApi.postInstance(domain);
+  }
+
+  public Object getInstanceFallback(String name) {
+    return name+"，执行时间过长，触发熔断......";
   }
 }
