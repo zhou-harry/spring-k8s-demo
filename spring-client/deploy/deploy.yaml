@@ -2,8 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    app: ${project.artifactId}-app
-  name: ${project.artifactId}-service
+    app: spring-k8s-client-app
+  name: spring-k8s-client-service
   namespace: default
 spec:
   type: NodePort
@@ -17,14 +17,14 @@ spec:
       targetPort: 8081
       nodePort: 38091
   selector:
-    app: ${project.artifactId}-app
+    app: spring-k8s-client-app
 ---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
   labels:
-    app: ${project.artifactId}-app
-  name: ${project.artifactId}
+    app: spring-k8s-client-app
+  name: spring-k8s-client-app
   namespace: default
 spec:
   replicas: 1
@@ -37,11 +37,11 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: ${project.artifactId}-app
+      app: spring-k8s-client-app
   template:
     metadata:
       labels:
-        app: ${project.artifactId}-app
+        app: spring-k8s-client-app
     spec:
       #hostNetwork: true
       dnsPolicy: ClusterFirst
@@ -49,7 +49,7 @@ spec:
       restartPolicy: Always
       serviceAccountName: spring-cloud-account
       containers:
-        - name: ${project.artifactId}
+        - name: spring-k8s-client
           image: image:v
           ports:
             - containerPort: 8080
