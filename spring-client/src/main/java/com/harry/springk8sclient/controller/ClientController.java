@@ -63,7 +63,7 @@ public class ClientController {
     return feignClientApi.getInstanceByName(serviceName);
   }
 
-  @GetMapping("/instance3/{serviceName}")
+  @GetMapping("/instance3")
   public Object getInstance3(@RequestBody ServiceDomain domain) {
     return feignClientApi.postInstance(domain);
   }
