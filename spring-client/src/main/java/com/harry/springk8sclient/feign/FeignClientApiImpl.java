@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(
     name = "${provider.service.name}",
+    url = "${provider.service.name}",
     fallbackFactory = ClientFallbackFactory.class
 )
 public interface FeignClientApiImpl extends FeignClientApi {
