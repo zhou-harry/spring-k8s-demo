@@ -36,6 +36,11 @@ public class BaseController implements FeignClientApi {
   }
 
   @Override
+  public Object getInstanceByName(String name) {
+    return discoveryClient.getInstances(name);
+  }
+
+  @Override
   public Object postInstance(ServiceDomain domain) {
     return discoveryClient.getInstances(domain.getName());
   }

@@ -32,6 +32,11 @@ public class ClientFallback implements FeignClientApiImpl {
   }
 
   @Override
+  public Object getInstanceByName(String name) {
+    return null;
+  }
+
+  @Override
   public Object postInstance(ServiceDomain domain) {
     return null;
   }
