@@ -1,6 +1,6 @@
 package com.harry.springk8sclient.controller;
 
-import com.harry.springfeignapi.feign.FeignClientApi;
+import com.harry.springk8sclient.feign.FeignClientApiImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientController {
 
   @Autowired
-  private FeignClientApi feignClientApi;
+  private FeignClientApiImpl feignClientApi;
   /**
    * Feign方式调用依赖服务
    *
