@@ -15,6 +15,7 @@ public class ClientFallbackFactory implements FallbackFactory<FeignClientApiImpl
   @Override
   public FeignClientApiImpl create(Throwable cause) {
     log.error("远程调用失败："+cause.getMessage());
+    fallback.setErrorMessage("远程调用失败："+cause.getMessage());
     return fallback;
   }
 }
