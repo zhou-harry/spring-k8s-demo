@@ -4,6 +4,9 @@ import com.harry.springk8sclient.feign.FeignClientApiImpl;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * 调用端熔断/降级
+ */
 @Data
 @Builder
 public class ClientFallback implements FeignClientApiImpl {

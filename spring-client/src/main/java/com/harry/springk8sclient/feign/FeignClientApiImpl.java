@@ -5,8 +5,7 @@ import com.harry.springk8sclient.feign.falback.ClientFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(
-    name = "${provider.service.name}",
-    url = "${provider.service.name}",
+    value = "${provider.service.name}",
     fallbackFactory = ClientFallbackFactory.class
 )
 public interface FeignClientApiImpl extends FeignClientApi {
