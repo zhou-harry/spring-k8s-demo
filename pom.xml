@@ -49,11 +49,6 @@
     <!--SpringCloud Kubernetes Discovery-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-kubernetes-fabric8</artifactId>
-      <version>${spring-cloud-starter-kubernetes-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-kubernetes-fabric8-all</artifactId>
       <version>${spring-cloud-starter-kubernetes-version}</version>
     </dependency>
