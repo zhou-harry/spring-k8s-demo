@@ -15,7 +15,3 @@ management:
 ribbon:
   eureka:
     enabled: false
-#开启 Hystrix
-feign:
-  hystrix:
-    enabled: true

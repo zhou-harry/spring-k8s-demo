@@ -37,6 +37,6 @@ public class ClientController {
     return feignClientApi.getServer();
   }
   public String getServerFallback(){
-    return "触发熔断";
+    return "执行时间过长，触发熔断......";
   }
 }
