@@ -1,5 +1,6 @@
 package com.harry.springk8sserver.controller;
 
+import com.harry.springfeignapi.domain.ServiceDomain;
 import com.harry.springfeignapi.feign.FeignClientApi;
 import com.harry.springk8sserver.service.ProviderService;
 import java.util.List;
@@ -32,6 +33,11 @@ public class BaseController implements FeignClientApi {
   @Override
   public Object getInstance(@RequestParam("name") String name) {
     return discoveryClient.getInstances(name);
+  }
+
+  @Override
+  public Object postInstance(ServiceDomain domain) {
+    return discoveryClient.getInstances(domain.getName());
   }
 
 }
