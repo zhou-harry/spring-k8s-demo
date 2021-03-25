@@ -37,6 +37,6 @@ public class ClientController {
     return feignClientApi.getServer();
   }
   public String getServerFallback(){
-    return "出发熔断";
+    return "触发熔断";
   }
 }
