@@ -60,7 +60,7 @@ public class ClientController {
 
   @GetMapping("/instance2/{serviceName}")
   public Object getInstance2(@PathVariable("serviceName") String serviceName) {
-    return feignClientApi.getInstance(serviceName);
+    return feignClientApi.getInstanceByName(serviceName);
   }
 
   @GetMapping("/instance3/{serviceName}")
