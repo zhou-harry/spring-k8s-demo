@@ -23,7 +23,7 @@ public class ClientController {
   @HystrixCommand(
       commandProperties = { // Command 熔断配置
           // 设置操作时间为 100 毫秒
-          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100")
+          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
       },
       fallbackMethod = "getServerFallback" // 设置 fallback 方法
   )
