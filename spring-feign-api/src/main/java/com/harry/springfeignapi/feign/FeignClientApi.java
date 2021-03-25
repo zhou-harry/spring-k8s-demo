@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public interface FeignClientApi {
 
-    @GetMapping()
+    @GetMapping("/")
     String getServer();
 }
