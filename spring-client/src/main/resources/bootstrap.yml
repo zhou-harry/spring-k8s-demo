@@ -1,7 +1,10 @@
 spring:
   application:
     name: spring-k8s-client
-
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
 server:
   port: 8080
 

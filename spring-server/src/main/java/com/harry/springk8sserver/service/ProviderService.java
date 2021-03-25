@@ -1,6 +1,5 @@
 package com.harry.springk8sserver.service;
 
-import com.harry.springfeignapi.feign.FeignClientApi;
 import com.harry.springk8sserver.config.CoreProperties;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -10,8 +9,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
 @Service("providerService")
-public class ProviderService implements FeignClientApi,
-    ApplicationListener<WebServerInitializedEvent> {
+public class ProviderService implements ApplicationListener<WebServerInitializedEvent> {
 
   @Autowired
   private CoreProperties properties;
@@ -24,7 +22,6 @@ public class ProviderService implements FeignClientApi,
     this.serverPort = event.getWebServer().getPort();
   }
 
-  @Override
   public String getServer() {
     InetAddress address = null;
     try {
@@ -32,7 +29,8 @@ public class ProviderService implements FeignClientApi,
     } catch (UnknownHostException e) {
       e.printStackTrace();
     }
-    return hostName+"当前访问的服务地址：" + address.getHostAddress() + ":" + this.serverPort + ", 用户名:" + properties
-        .getUsername() + ", 密码:" + properties.getPassword()+"/"+properties.getMessage();
+    return hostName + "当前访问的服务地址：" + address.getHostAddress() + ":" + this.serverPort + ", 用户名:"
+        + properties
+        .getUsername() + ", 密码:" + properties.getPassword() + "/" + properties.getMessage();
   }
 }
