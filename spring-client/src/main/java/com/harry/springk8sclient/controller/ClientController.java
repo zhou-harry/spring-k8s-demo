@@ -1,8 +1,6 @@
 package com.harry.springk8sclient.controller;
 
 import com.harry.springk8sclient.feign.FeignClientApiImpl;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import java.util.Random;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +18,13 @@ public class ClientController {
    *
    * @return
    */
-  @HystrixCommand(
-      commandProperties = { // Command 熔断配置
-          // 设置操作时间为 100 毫秒
-          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
-      },
-      fallbackMethod = "getServerFallback" // 设置 fallback 方法
-  )
+//  @HystrixCommand(
+//      commandProperties = { // Command 熔断配置
+//          // 设置操作时间为 100 毫秒
+//          @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+//      },
+//      fallbackMethod = "getServerFallback" // 设置 fallback 方法
+//  )
   @GetMapping("/server")
   public String getServer() throws InterruptedException {
     long executeTime = random.nextInt(200);
