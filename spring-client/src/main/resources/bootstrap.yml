@@ -15,6 +15,6 @@ management:
     web:
       exposure:
         include: "*"
-ribbon:
-  eureka:
-    enabled: false
+#ribbon:
+#  eureka:
+#    enabled: false
