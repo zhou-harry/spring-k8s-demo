@@ -24,7 +24,7 @@ apiVersion: apps/v1
 metadata:
   labels:
     app: ${project.artifactId}-app
-  name: ${project.artifactId}-app
+  name: ${project.artifactId}
   namespace: default
 spec:
   replicas: 1
