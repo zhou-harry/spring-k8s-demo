@@ -27,7 +27,7 @@ metadata:
   name: spring-k8s-server-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 15
   minReadySeconds: 5
   strategy:
