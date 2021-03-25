@@ -12,7 +12,7 @@ node {
         dir(module) {
           sh """
             chmod 755 target/deploy/build.sh
-            target/deploy/build.sh ${module}
+            target/deploy/build.sh ${module} ${profile}
           """
         }
       }
