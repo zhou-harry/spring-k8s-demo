@@ -1,6 +1,8 @@
 package com.harry.springk8sclient.feign.falback;
 
+import com.google.common.collect.Lists;
 import com.harry.springk8sclient.feign.FeignClientApiImpl;
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,5 +18,15 @@ public class ClientFallback implements FeignClientApiImpl {
   @Override
   public String getServer() {
     return "服务请求失败了=" + errorMessage;
+  }
+
+  @Override
+  public List<String> getServiceList() {
+    return Lists.newArrayList();
+  }
+
+  @Override
+  public Object getInstance(String name) {
+    return null;
   }
 }
