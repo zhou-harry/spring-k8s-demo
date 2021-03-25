@@ -3,19 +3,19 @@ package com.harry.springk8sclient.feign.falback;
 import com.harry.springk8sclient.feign.FeignClientApiImpl;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class ClientFallbackFactory implements FallbackFactory<FeignClientApiImpl> {
 
-  @Autowired
-  private ClientFallback fallback;
   @Override
   public FeignClientApiImpl create(Throwable cause) {
-    log.error("远程调用失败："+cause.getMessage());
-    fallback.setErrorMessage("远程调用失败："+cause.getMessage());
-    return fallback;
+    // TODO: 2021/3/25 后台打印跟踪日志
+    log.error("远程调用失败：" + cause.getMessage());
+
+    return ClientFallback.builder()
+        .errorMessage("远程调用失败：" + cause.getMessage())
+        .build();
   }
 }

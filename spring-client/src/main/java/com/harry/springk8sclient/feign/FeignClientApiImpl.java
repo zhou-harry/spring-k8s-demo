@@ -1,13 +1,14 @@
 package com.harry.springk8sclient.feign;
 
 import com.harry.springfeignapi.feign.FeignClientApi;
-import com.harry.springk8sclient.feign.falback.ClientFallbackFactory;
+import com.harry.springk8sclient.feign.falback.ClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(
-    name = "http://spring-k8s-server-service:8080",
-    url = "http://spring-k8s-server-service:8080",
-    fallbackFactory = ClientFallbackFactory.class
+    name = "${provider.service.name}",
+    url = "${provider.service.name}",
+//    fallbackFactory = ClientFallbackFactory.class
+    fallback = ClientFallback.class
 )
 public interface FeignClientApiImpl extends FeignClientApi {
 
