@@ -1,18 +1,19 @@
-package com.harry.springk8sclient.feign.falback;
+package com.harry.springfeignapi.feign.falback;
 
 import com.google.common.collect.Lists;
 import com.harry.springfeignapi.domain.ServiceDomain;
-import com.harry.springk8sclient.feign.FeignClientApiImpl;
-import java.util.List;
+import com.harry.springfeignapi.feign.FeignClientApi;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 调用端熔断/降级
  */
 @Data
 @Builder
-public class ClientFallback implements FeignClientApiImpl {
+public class ClientFallback implements FeignClientApi {
 
   private String errorMessage;
 

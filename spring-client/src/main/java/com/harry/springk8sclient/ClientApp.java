@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages={"com.harry.springfeignapi.feign"})
 @EnableHystrix //激活服务短路
 public class ClientApp {
 
