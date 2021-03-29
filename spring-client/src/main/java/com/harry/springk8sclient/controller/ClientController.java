@@ -19,6 +19,11 @@ public class ClientController {
   @Autowired
   private FeignClientApi feignClientApi;
 
+  @GetMapping("/test")
+  public String test() {
+    return "OK";
+  }
+
   /**
    * Feign方式调用依赖服务
    *
