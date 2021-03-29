@@ -28,6 +28,12 @@
       <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>com.harry</groupId>
+      <artifactId>spring-common-swagger</artifactId>
+      <version>${parent.version}</version>
+    </dependency>
+
   </dependencies>
 
 </project>

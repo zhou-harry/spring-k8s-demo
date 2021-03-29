@@ -22,12 +22,17 @@
     <module>spring-server</module>
     <module>spring-client</module>
     <module>spring-feign-api</module>
+    <module>spring-common</module>
   </modules>
 
   <properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
     <java.version>1.8</java.version>
     <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
     <spring-cloud-starter-kubernetes-version>2.0.2</spring-cloud-starter-kubernetes-version>
+    <swagger.version>2.9.2</swagger.version>
+    <security-oauth2.version>2.3.3.RELEASE</security-oauth2.version>
   </properties>
 
   <dependencies>
