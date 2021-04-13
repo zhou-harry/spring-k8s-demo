@@ -8,7 +8,7 @@ node {
         def module=selectedModule[i];
           sh """
             chmod 755 refresh.sh
-            refresh.sh ${module} ${profile}
+            center/refresh.sh ${module} ${profile}
           """
       }
    }
