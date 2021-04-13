@@ -1,3 +1,9 @@
-k8s:
-  demo:
-    message: Client Say Hello to the PRO World
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-client-config-pro
+data:
+  application.yml: |-
+    k8s:
+      demo:
+        message: Say Hello to the Pro
