@@ -1,0 +1,3 @@
+k8s:
+  demo:
+    message2: this is inner message

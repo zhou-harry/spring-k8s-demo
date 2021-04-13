@@ -1,0 +1,3 @@
+k8s:
+  demo:
+    message: Client Say Hello to the DEV World
