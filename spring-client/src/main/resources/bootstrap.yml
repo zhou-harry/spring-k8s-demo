@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-k8s-client
+    name: spring-client
   cloud:
     loadbalancer:
       ribbon:

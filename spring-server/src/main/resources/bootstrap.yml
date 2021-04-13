@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-k8s-server
+    name: spring-server
   cloud:
     kubernetes:
       discovery:
@@ -28,11 +28,11 @@ spring:
         enabled: true
         #启用通过 K8S API 发现 ConfigMap 配置
         enableApi: true
-        name: spring-server-config
+        name: ${spring.application.name}-config
       secrets:
         enabled: true
         enable-api: true
-        name: spring-server-secret
+        name: ${spring.application.name}-secret
 
 server:
   port: 8080
