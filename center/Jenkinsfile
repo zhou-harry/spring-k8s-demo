@@ -7,7 +7,7 @@ node {
       for(int i=0;i<selectedModule.length;i++){
         def module=selectedModule[i];
           sh """
-            chmod 755 refresh.sh
+            chmod 755 center/refresh.sh
             center/refresh.sh ${module} ${profile}
           """
       }
