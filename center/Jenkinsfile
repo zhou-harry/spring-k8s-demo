@@ -1,0 +1,18 @@
+node {
+   def selectedModule="${modules}".split(',')
+   stage('代码同步') {
+      git branch: '${branch}', credentialsId: 'gitlab-root', url: 'git://github.com/zhou-harry/spring-k8s-demo.git'
+   }
+   stage('刷新ConfigMap') {
+      for(int i=0;i<selectedModule.length;i++){
+        def module=selectedModule[i];
+        dir(module) {
+          sh """
+            chmod 755 refresh.sh
+            refresh.sh ${module} ${profile}
+          """
+        }
+      }
+   }
+
+}
