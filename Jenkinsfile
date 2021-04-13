@@ -23,7 +23,7 @@ node {
         dir(module) {
           sh """
             chmod 755 target/deploy/deploy.sh
-            target/deploy/deploy.sh ${module}
+            target/deploy/deploy.sh ${module} ${profile}
           """
         }
       }
