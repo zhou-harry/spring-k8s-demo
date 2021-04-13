@@ -29,8 +29,13 @@ public class ProviderService implements ApplicationListener<WebServerInitialized
     } catch (UnknownHostException e) {
       e.printStackTrace();
     }
-    return hostName + "当前访问的服务地址：" + address.getHostAddress() + ":" + this.serverPort + ", 用户名:"
-        + properties
-        .getUsername() + ", 密码:" + properties.getPassword() + "/" + properties.getMessage();
+    return String.format("%s当前访问的服务地址：%s : %s , 用户名:%s, 密码:%s, 外部配置属性值:%s, 内部配置属性值:%s",
+        hostName,
+        address.getHostAddress(),
+        this.serverPort,
+        properties.getUsername(),
+        properties.getPassword(),
+        properties.getMessage(),
+        properties.getMessage2());
   }
 }

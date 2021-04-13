@@ -10,4 +10,5 @@ public class CoreProperties {
   private String username;
   private String password;
   private String message;
+  private String message2;
 }
