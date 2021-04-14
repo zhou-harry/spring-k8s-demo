@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: spring-server-config-pro
+  name: spring-server-config
 data:
   application.yml: |-
     k8s:
